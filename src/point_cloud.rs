@@ -30,6 +30,10 @@ impl PointCloud {
         }
     }
 
+    pub fn from_points(points: Vec<GpuPoint>) -> Self {
+        Self { points }
+    }
+
     /// Generate a demo point cloud: a colored cube grid.
     pub fn generate_demo(count_per_axis: u32) -> Self {
         let total = (count_per_axis as usize).pow(3);

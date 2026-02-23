@@ -1,7 +1,15 @@
 [package]
 name = "point-cloud-viewer"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+
+[lib]
+name = "point_cloud_viewer"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "point-cloud-viewer"
+path = "src/main.rs"
 
 [dependencies]
 wgpu = "23"
@@ -11,6 +19,12 @@ pollster = "0.4"
 glam = "0.29"
 env_logger = "0.11"
 log = "0.4"
+pyo3 = { version = "0.23", features = ["extension-module"], optional = true }
+numpy = { version = "0.23", optional = true }
+
+[features]
+default = []
+python = ["pyo3", "numpy"]
 
 [profile.release]
 opt-level = 3
